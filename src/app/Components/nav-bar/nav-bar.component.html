@@ -1,0 +1,40 @@
+<div class="container">
+    <div >
+        <nav class="navbar navbar-expand-lg navbar-dark text-white bg-dark px-5">
+            <div class="container-fluid">
+              <a class="navbar-brand" routerLink="/" >Harish Chothing</a>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+                <div class="navbar-nav">
+                  <a class="nav-link "  routerLinkActive="active" routerLink="/">Home</a>
+                  <a class="nav-link" routerLinkActive="active" routerLink="/adminlogin">Admin</a>
+                  <a class="nav-link" routerLinkActive="active"  routerLink="/login">User Login</a>
+                  <a class="nav-link" routerLinkActive="active" routerLink="/register">User Register</a>
+                </div>
+
+              </div>
+
+
+
+              <div class="d-flex">
+                <a class="  text-white-50 text-decoration-none "  (click)="Logout()">User Logout</a>
+                
+                <button *ngIf="CartItems.length > 0" routerLink="/cartitems"  class="btn btn-sm btn-dark  position-relative">
+                    <i class="bi bi-cart-fill"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{CartItems.length}}
+                    </span>
+                  </button>
+              </div>
+
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+            </div>
+          </nav>
+    </div>
+  
+
+   
+</div>

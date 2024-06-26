@@ -1,0 +1,84 @@
+<div class="container">
+
+    <div class="card w-75 my-5 mx-auto">
+        <div class="ms-auto p-2">
+            <button class="btn btn-dark" routerLink="/adminlogin/adminhome" >Go to products</button>
+        </div>
+        <div class="p-3 w-75 mx-auto">
+            <form (ngSubmit)="updateProduct()" #EditForm="ngForm">
+                <div class="mb-2 text-center">
+                    <h2 class="text-danger">Edit Product Form</h2>
+                </div>
+                <div class="mb-2">
+                    <label for="productName" class="form-lable">Product Name</label>
+                    <input type="text"  class="form-control" required name="productName" [(ngModel)]="updatedProduct.productName">
+                </div>
+                <div class="mb-2">
+                    <label for="category" class="form-lable">Category</label>
+                    <input type="text"  required name="category" [(ngModel)]="updatedProduct.category" class="form-control">
+                </div>
+                <div class="mb-2">
+                    <label for="price" class="form-lable">Price</label>
+                    <input type="number"  required name="price" [(ngModel)]="updatedProduct.price" class="form-control">
+                </div>
+                <div class="mb-2">
+                    <label for="quantity" class="form-lable">Quantity</label>
+                    <input type="number"  required name="quantity" [(ngModel)]="updatedProduct.quantity" class="form-control">
+                </div>
+                <div class="mb-2">
+                    <label for="image" class="form-lable">Image Photo</label>
+                    <input type="file" (change)="uploadProductImage($event)" name="image" class="form-control">
+                    <p class="text-danger" *ngIf="!updatedProduct.image">
+                        Upload product image picture
+                    </p>
+                </div>
+                <div class="mb-2" *ngIf="updatedProduct.image">
+                    <img [src]="updatedProduct.image" width="100" height="100" alt="">
+                </div>
+    
+                <div class="mb-2">
+                    <button type="submit" class="btn btn-primary" [disabled]="EditForm.invalid">save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <!-- <form (ngSubmit)="updateProduct()" #EditForm="ngForm">
+        <div class="mb-2 text-center">
+            <h2 class="text-danger">Edit Product Form</h2>
+        </div>
+        <div class="mb-2">
+            <label for="productName" class="form-lable">Product Name</label>
+            <input type="text"  class="form-control" required name="productName" [(ngModel)]="updatedProduct.productName" >
+        </div>
+        <div class="mb-2">
+            <label for="category" class="form-lable">category</label>
+            <input type="text"  required name="category" [(ngModel)]="updatedProduct.category" class="form-control">
+            
+        </div>
+        <div class="mb-2">
+            <label for="price" class="form-lable">price</label>
+            <input type="number"  required name="price" [(ngModel)]="updatedProduct.price" class="form-control">
+            
+        </div>
+        <div class="mb-2">
+            <label for="quantity" class="form-lable">quantity</label>
+            <input type="number"  required name="quantity" [(ngModel)]="updatedProduct.quantity"
+                class="form-control">
+           
+          
+        </div>
+        <div class="mb-2">
+            <label for="image" class="form-lable">image Photo</label>
+            <input type="file" (change)="uploadProductImage($event)" name="image" required  [(ngModel)]="updatedProduct.image" class="form-control">
+            
+        </div>
+        <div *ngIf="image">
+            <img [src]="updatedProduct.image" width="100" height="100" alt="">
+        </div>
+       
+
+        
+    </form> -->
+</div>

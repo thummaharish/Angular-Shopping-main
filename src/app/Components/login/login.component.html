@@ -1,0 +1,42 @@
+<div class="container ">
+    <div class="card w-75 my-5 mx-auto">
+        <div class="p-3 w-75 mx-auto">
+            <form [formGroup]="loginForm">
+                <div class="mb-2 text-center">
+                    <h2 class="text-success">Login Form</h2>
+                </div>
+
+                <div class="mb-2">
+                    <label for="email" class="form-lable">Email</label>
+                    <input type="email" formControlName="email" placeholder="Enter your email" class="form-control">
+                    <p class="text-danger"
+                        *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched ">
+                        Email Required
+                    </p>
+                    <p class="text-danger"
+                        *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched ">
+                        Enter valid email address
+                    </p>
+                </div>
+                <div class="mb-2">
+                    <label for="password" class="form-lable">Password</label>
+                    <input type="text" formControlName="password" placeholder="Enter your password"
+                        class="form-control">
+                    <p class="text-danger"
+                        *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched ">
+                        Password Required
+                    </p>
+                </div>
+
+                <div class="mb-2">
+                    <p>Don't have account ? click here to <a class="text-decoration-none"
+                            routerLink="/register"><b>Register</b></a></p>
+                </div>
+
+                <div class="mb-2">
+                    <button class="btn btn-primary" type="submit" [disabled]="loginForm.invalid" (click)="Login()">User Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
