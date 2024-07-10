@@ -1,39 +1,69 @@
-<div class="container">
-    <div >
-        <nav class="navbar navbar-expand-lg navbar-dark text-white bg-dark px-5">
-            <div class="container-fluid">
-              <a class="navbar-brand" routerLink="/" >Harish Chothing</a>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-
-                <div class="navbar-nav">
-                  <a class="nav-link "  routerLinkActive="active" routerLink="/">Home</a>
-                  <a class="nav-link" routerLinkActive="active" routerLink="/adminlogin">Admin</a>
-                  <a class="nav-link" routerLinkActive="active"  routerLink="/login">User Login</a>
-                  <a class="nav-link" routerLinkActive="active" routerLink="/register">User Register</a>
-                </div>
-
-              </div>
+<div class="container mb-2">
 
 
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand mx-2" routerLink="/" >
+          <img src="Assets/Harish Shopping.jpg"  alt="">
+        </a>
+        <span class="input-group me-auto w-50 mx-1">
 
-              <div class="d-flex">
-                <a class="  text-white-50 text-decoration-none "  (click)="Logout()">User Logout</a>
+          <input type="text" [(ngModel)]="searchTerm" (keyup)="SearchProductName()"  placeholder="search..."  class="form-control  border  border-dark border-1">
+          <!-- <input type="text" [(ngModel)]="searchTerm"  placeholder="search..."  class="form-control border border-warning border-1">
+          <button class="btn btn-outline-warning " (click)="SearchProductName()"><i class="bi bi-search"></i></button> -->
+        </span>
+         <!-- <span class="mx-1">
+                  <input type="range" [(ngModel)]="changePrice" name="price"  max="1000" (change)="PriceFilter()">
+                  <label for="price">Price</label> {{changePrice}}
+              </span> -->
+<!-- 
+        <div class="d-flex">
                 
-                <button *ngIf="CartItems.length > 0" routerLink="/cartitems"  class="btn btn-sm btn-dark  position-relative">
-                    <i class="bi bi-cart-fill"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {{CartItems.length}}
-                    </span>
-                  </button>
-              </div>
+                
+          <button *ngIf="CartItems.length > 0" routerLink="/cartitems"  class="btn btn-sm btn-dark  position-relative">
+              <i class="bi bi-cart-fill"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{CartItems.length}}
+              </span>
+            </button>
 
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+           
+        </div> -->
 
-            </div>
-          </nav>
-    </div>
+        
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+             <a class="nav-link "   routerLinkActive="active" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/login"> Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="/register"> Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link   "  (click)="Logout()"> Logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" *ngIf="CartItems.length > 0" routerLink="/cartitems"  routerLinkActive="active" > 
+                <i class="bi bi-cart-fill">{{CartItems.length}}</i>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+   
   
 
    

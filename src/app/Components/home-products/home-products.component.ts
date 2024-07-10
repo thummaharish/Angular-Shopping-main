@@ -13,14 +13,11 @@ import { AddtoCart } from '../Store/CartStore/cart.action';
 export class HomeProductsComponent implements OnInit {
 
    allProducts : any = []
+   searchProducts : any =[]
    addedProduct : any = {}
    totalPrice  = 0
    searchProductName = ''
-
-   user =  localStorage.getItem('userDetails')
-
-   
-
+   changePrice !: number
 
 
 constructor(private productApi : ProductApiService, private store : Store<{CartReducer:cartState}> ){}
@@ -35,42 +32,60 @@ ngOnInit(): void {
 getAllProducts(){
 
   this.productApi.getProducts().subscribe((res : any) => {
+    this.allProducts = res;
 
-    if (this.searchProductName === '' || !this.searchProductName) {
-      this.allProducts = res;
-    } 
-    else {
-      this.allProducts = res.filter((product : any)=> product.title.toLowerCase().includes(this.searchProductName.toLowerCase()))
-      
-      console.log('home product =', this.allProducts);
-    }
+    this.searchProducts = this.allProducts
+
   })
 
 
 }
-
-
 
 getStore(){
   this.store.select('CartReducer').subscribe(data=>{
     this.addedProduct = data.cartItems
     this.totalPrice = data.totalPrice
     this.searchProductName = data.searchTerm
+    this.changePrice = data.priceRange
 
-    console.log('home product component search term', this.searchProductName)
+    console.log('home product component price', this.changePrice)
+
+    this.searchProducts = this.allProducts.filter((product:any)=>{
+      if (this.searchProductName && this.changePrice) {
+        return product.title.toLowerCase().includes(this.searchProductName.toLowerCase()) 
+               && product.price < this.changePrice;
+      }else if(this.searchProductName === '' && this.changePrice === 0){
+        return this.searchProducts = this.allProducts
+      }
+      // If only searchProductName is specified
+      if (this.searchProductName) {
+        return product.title.toLowerCase().includes(this.searchProductName.toLowerCase());
+      }
+      // If only changePrice is specified
+      if (this.changePrice) {
+        return product.price < this.changePrice;
+      }
+      // If neither is specified, return false (or adjust as needed)
+      // return this.searchProducts = this.allProducts
+    })
+
+
+    console.log('home product component search term', this.searchProducts)
   })
 }
 
 addtocart(product : any){
-  // let user = localStorage.getItem('userDetails')
-  // console.log('user =', this.user)
+  let user = localStorage.getItem('userDetails')
+  console.log('user =', user)
 
-  if(this.user){
+  if(user){
     this.store.dispatch(AddtoCart({product:product}))
   }else{
     alert('login before add product to cart')
   }
 }
+
+
 
 
 }

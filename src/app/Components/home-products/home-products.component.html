@@ -1,13 +1,17 @@
-<div class="container mt-5 ">
+<div class="container  ">
+    
+    
    <div class="row">
-       <ng-container *ngFor="let product of allProducts  ">
+       <ng-container *ngFor="let product of searchProducts  ">
+        
            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-2">
                <div class="card h-100">
                    <div class="card-header">
                        <img [src]="product.image" height="150" class="card-img-top" alt="">
                    </div>
                    <div class="card-body">
-                       <p>{{product.title}}</p>
+                       <p>{{product.title}}</p> <br>
+                       <p>{{product.price}}</p>
                    </div>
                    <div class="card-footer d-flex gap-2 justify-content-around">
                        <button class="btn btn-primary" (click)="addtocart(product)">Add to cart</button>

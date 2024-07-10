@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../../Services/Users/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   registerForm !: FormGroup
   image !: string 
 
-  constructor(private FB: FormBuilder, private http: HttpClient, private usersApi : UsersService) { }
+  constructor(private FB: FormBuilder, private http: HttpClient, private usersApi : UsersService, private router : Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.FB.group({
@@ -49,6 +50,7 @@ export class RegisterComponent implements OnInit {
 
     if(this.image){
       this.usersApi.RegisterUser(this.registerForm.value).subscribe(res=>console.log('register post details', res))
+      this.router.navigate(['/'])
     }else{
       alert('upload image')
     }

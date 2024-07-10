@@ -9,17 +9,14 @@ import { CartReducer } from './Components/Store/CartStore/cart.reducer';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { CartitemsComponent } from './Components/cartitems/cartitems.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
 import { RegisterComponent } from './Components/Register/register/register.component';
 import { LoginComponent } from './Components/login/login.component';
-import { RouterModule } from '@angular/router';
-import { AdminComponent } from './Components/Admin/admin/admin.component';
-import { AddProductComponent } from './Components/Admin/add-product/add-product.component';
-import { AdminLoginComponent } from './Components/Admin/admin-login/admin-login.component';
-import { EditeproductComponent } from './Components/Admin/editeproduct/editeproduct.component';
+import { provideRouter, Router, RouterModule,Routes } from '@angular/router';
+
 import { HomeProductsComponent } from './Components/home-products/home-products.component';
-import { ProductByidComponent } from './Components/product-byid/product-byid.component';
-import { AdminRegisterComponent } from './Components/Admin/admin-register/admin-register.component';
+import { ProductByIdComponent } from './Components/product-by-id/product-by-id.component';
+
 
 
 
@@ -33,18 +30,11 @@ import { AdminRegisterComponent } from './Components/Admin/admin-register/admin-
     CartitemsComponent,
     RegisterComponent,
     LoginComponent,
-    AdminComponent,
-    AddProductComponent,
-    AdminLoginComponent,
-    EditeproductComponent,
     HomeProductsComponent,
-    ProductByidComponent,
-    AdminRegisterComponent,
-    
-   
+    ProductByIdComponent
    
     
-    
+  
   ],
   imports: [
     BrowserModule,
@@ -52,15 +42,14 @@ import { AdminRegisterComponent } from './Components/Admin/admin-register/admin-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-RouterModule,
+    RouterModule,
 
-  
     
    StoreModule.forRoot({CartReducer:CartReducer})
     
   ],
   providers: [
-    provideClientHydration(), provideHttpClient(withFetch())
+    provideClientHydration(), provideHttpClient(withFetch()), 
   ],
   bootstrap: [AppComponent]
 })

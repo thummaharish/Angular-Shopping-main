@@ -1,8 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
 import { cartInitialState } from './cart.state';
-import { AddtoCart, DecrementQuantity, IncementQuantity, Removeitem, SearchProduct, TotalPrice } from './cart.action';
+import { AddtoCart, DecrementQuantity, IncementQuantity, PriceRange, Removeitem, SearchProduct, TotalPrice } from './cart.action';
 
 export const CartReducer = createReducer(
+    
     cartInitialState,
 
     on(AddtoCart, (state, action) => {
@@ -95,6 +96,13 @@ export const CartReducer = createReducer(
         const newState = { ...state, searchTerm: action.productName };
         console.log('searchTerm in ngrx', newState.searchTerm);
         return { ...state, searchTerm: action.productName };
-      })
+      }),
+
+      on(PriceRange, (state, action) => {
+        const newState = { ...state, priceRange: action.productPrice };
+        // console.log('price range in ngrx', newState);
+        console.log('cart state',{ ...state, priceRange: action.productPrice })
+        return { ...state, priceRange: action.productPrice };
+      }),
 
 )

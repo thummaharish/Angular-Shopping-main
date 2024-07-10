@@ -1,0 +1,15 @@
+app-nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures the nav bar is above other content */
+ 
+  }
+  
+  router-outlet {
+    display: block;
+    margin-top: 70px; /* Adjust based on the height of your nav bar */
+   
+ 
+  }
+  

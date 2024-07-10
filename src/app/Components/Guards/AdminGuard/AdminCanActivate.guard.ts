@@ -10,7 +10,7 @@ export const AdminCanActivateGuard: CanActivateFn = () => {
   if(adminAuthService.AdminIsAuthenticated()){
     return true
   }else{
-    // router.navigate(['/adminlogin/adminhome'])
+    router.navigate(['/adminlogin/adminhome'])
     return false
   }
   

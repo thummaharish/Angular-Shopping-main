@@ -2,3 +2,21 @@ a{
     cursor: pointer;
 }
 
+a:focus{
+    border: none;
+    outline: none;
+}
+
+input{
+    border: none;
+    outline: none;
+   
+}
+
+.navbar-brand img{
+    border-radius: 80%;
+    height: 35px;
+    width: 35px;
+
+}
+

@@ -13,15 +13,13 @@ export class UsersService {
  
 
   GetUsers(){
-    return this.http.get(`http://localhost:7200/user`)
+    return this.http.get(`https://test-server-qs1n.onrender.com/users`)
   }
 
   RegisterUser(user : any){
-    return this.http.post(`http://localhost:7200/user/`, user)
+    return this.http.post(`https://test-server-qs1n.onrender.com/users/`, user)
   }
 
-  GetAdmins(){
-    return this.http.get(`http://localhost:7200/admin`) 
-  }
+  
 
 }

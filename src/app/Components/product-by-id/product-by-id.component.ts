@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ProductApiService } from '../Services/product-api.service';
-import { Store } from '@ngrx/store';
-import { cartState } from '../Store/CartStore/cart.state';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddtoCart } from '../Store/CartStore/cart.action';
+import { cartState } from '../Store/CartStore/cart.state';
+import { Store } from '@ngrx/store';
 
 @Component({
-  selector: 'app-product-byid',
-  templateUrl: './product-byid.component.html',
-  styleUrl: './product-byid.component.css'
+  selector: 'app-product-by-id',
+  templateUrl: './product-by-id.component.html',
+  styleUrl: './product-by-id.component.css'
 })
-export class ProductByidComponent implements OnInit {
+export class ProductByIdComponent implements OnInit {
 
   product !: any
 
   productId !: any
-  user =  localStorage.getItem('userDetails')
+ 
 
 
   constructor(private activatedRoute : ActivatedRoute, private ProductsApi: ProductApiService,  private router:Router, private store : Store<{CartReducer:cartState}>){}
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(res =>{
-      this.productId = res.get('Id')
+      this.productId = res.get('productId')
       
     })
   
@@ -38,13 +38,15 @@ export class ProductByidComponent implements OnInit {
   }
 
   addtocart(product : any){
-    
-    if(this.user){
+   const user =  localStorage.getItem('userDetails')
+    if(user){
       this.store.dispatch(AddtoCart({product:product}))
     }else{
       alert('login before add product to cart')
     }
   }
+
+ 
 
 
 

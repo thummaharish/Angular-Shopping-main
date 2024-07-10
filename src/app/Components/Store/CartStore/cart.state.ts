@@ -2,6 +2,7 @@ export interface cartState {
     cartItems: any[],
     totalPrice :number,
     searchTerm : string
+    priceRange : number
     
    
 }
@@ -10,5 +11,6 @@ export interface cartState {
 export const cartInitialState: cartState = {
     cartItems: [],
     totalPrice : 0,
-    searchTerm : ''
+    searchTerm : '',
+    priceRange : 0
 }
